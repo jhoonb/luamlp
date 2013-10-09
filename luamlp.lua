@@ -30,7 +30,7 @@
 -- | Narray(nl, nc, value)  					-> table
 -- | Luamlp:New(ni, nh1, nh2, nout)				-> number
 -- | Luamlp:Config(lr, it, bias, ert, mm, mt, fx, dfx)	-> table
--- | Luamlp:LoadConfig(name)				 	-> None
+-- | Luamlp:LoadConfig(name(optional))			 	-> None
 -- | Luamlp:Training(print_error)	 			-> None
 -- | Luamlp:Propagation(x)					-> table
 -- | Luamlp:Backpropagation(y)					-> number
@@ -177,11 +177,11 @@ function Luamlp:New(ni, nh1, nh2, nout)
 	---------------------------------------------------------------------
 	--- Function: LoadConfig, locad file for configure Luamlp
 	-- parameters: name -> string name of file 
+	-- default: string config.luamlp
 	--------------------------------------------------------------------
 	function mlp:LoadConfig(name)
 
-		assert(name)
-		local name = name
+		local name = name or 'config.luamlp'
 
 		local conf = dofile(name)
 
