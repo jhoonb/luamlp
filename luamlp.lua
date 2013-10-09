@@ -26,15 +26,15 @@
 --
 --]]
 ---
--- FUNCTIONS  											RETURN 
--- | Narray(nl, nc, value)  							-> table
--- | Luamlp:New(ni, nh1, nh2, nout)						-> number
+-- FUNCTIONS  				 			RETURN 
+-- | Narray(nl, nc, value)  					-> table
+-- | Luamlp:New(ni, nh1, nh2, nout)				-> number
 -- | Luamlp:Config(lr, it, bias, ert, mm, mt, fx, dfx)	-> table
--- | Luamlp:LoadConfig(name)				 			-> None
--- | Luamlp:Training(print_error)	 					-> None
--- | Luamlp:Propagation(x)								-> table
--- | Luamlp:Backpropagation(y)							-> number
--- | Luamlp:Test(dinput)								-> None
+-- | Luamlp:LoadConfig(name)				 	-> None
+-- | Luamlp:Training(print_error)	 			-> None
+-- | Luamlp:Propagation(x)					-> table
+-- | Luamlp:Backpropagation(y)					-> number
+-- | Luamlp:Test(dinput)					-> None
 ------------------------------------------------------
 
 -- struct luamlp
@@ -467,7 +467,7 @@ function Luamlp:New(ni, nh1, nh2, nout)
 
 	---------------------------------------------------------------------
 	-- Function Test
-	-- Parameters: data_input: array input
+	-- Parameters: dinput: array input
 	---------------------------------------------------------------------
     function mlp:Test(dinput)
 
