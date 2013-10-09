@@ -15,4 +15,4 @@ mlp.input = {{0,0},{0,1},{1,0},{1,1}}
 mlp.output = {{0},{1},{1},{0}}
 mlp:Config(0.3, 100000, 1, 0.01, 0.003)
 mlp:Training(true)
-mlp:Test(mlp.input, mlp.output)
+mlp:Test(mlp.input)
