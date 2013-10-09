@@ -1,2 +1,4 @@
 # ---- ignore backup's from files .lua
 *.lua~
+*.md~
+*.gitinore~
