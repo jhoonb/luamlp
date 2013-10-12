@@ -53,8 +53,7 @@ In terminal enter the directo luary where Luamlp, digit:
 Solution using Luamlp
 --
 
-Detais of example XOR: <br>
---
+<b> Detais of example XOR: </b> <br>
 
 | input | output |<br>
  0,0 = 0 <br>
@@ -81,5 +80,27 @@ Detais of example XOR: <br>
 > mlp:Training(true)<br>
 > <b> test of learning </b><br>
 > mlp:Test(mlp.input)<br>
+
+<br>
+
+Using File of configuration, config.luamlp
+--
+
+Can use a special file that contains a table, <br>
+table where the keys are the parameters of the neural network. <br>
+
+<b>Config.luamlp</b> file, can create activation functions and other options <br>
+to modify the behavior of the neural network, without modifying the original stand.<br>
+The filename 'config.luamlp' is the default name, if he cares for your application, <br> 
+simply called function:
+
+> mlp:loadConfig() <br>
+
+after creating a neural network. If you use another file, such as <i>'load.txt'</i> <br>
+just in function call loadConfig pass a string with the file name, example:
+
+> mlp:loadConfig('load.txt')
+
+
 
 
