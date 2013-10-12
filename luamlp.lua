@@ -14,42 +14,43 @@
 	number of neurons used in any layer. The data input and output
 	(for training) must be formatted in a two-dimensional array format:
 	
-	Data_input = {{x1}, {x2}, ... , x3}} or 
-	{{{x1, x2, x3}, {y1, y2, y3}, ..., {x n, n1, n3}}
+	Data_input = {{x1},... {xn}} or {{x1,x2} ..., {xn-1, xn}}
 
-	Data_output y1 = {{}, ..., {y2}} or {{y1, y2}, ..., {yn, yn-1}}
+	Data_output y1 = {{y1},... {yn}} or {{y1,y2} ..., {yn-1, yn}}
 
 
 -- DEPENDENCIES
-	None.
-	Lua 5.2.1
---
+	Lua installed in system.
+	Tested in Lua 5.2 (5.1 dont work unpack in function Test)
+	Linux/Ubuntu: sudo apt-get install lua5.2
+
+-- FUNCTIONS | RETURN 
+
+-- | Narray(nl, nc, value) -> table
+-- | Luamlp:New(ni, nh1, nh2, nout) -> number
+-- | Luamlp:Config(lr, it, bias, ert, mm, mt, fx, dfx) -> table
+-- | Luamlp:LoadConfig(name(optional)) -> None
+-- | Luamlp:Training(print_error) -> None
+-- | Luamlp:Propagation(x) -> table
+-- | Luamlp:Backpropagation(y) -> number
+-- | Luamlp:Test(dinput) -> None
+
 --]]
----
--- FUNCTIONS  				 			RETURN 
--- | Narray(nl, nc, value)  					-> table
--- | Luamlp:New(ni, nh1, nh2, nout)				-> number
--- | Luamlp:Config(lr, it, bias, ert, mm, mt, fx, dfx)	-> table
--- | Luamlp:LoadConfig(name(optional))			 	-> None
--- | Luamlp:Training(print_error)	 			-> None
--- | Luamlp:Propagation(x)					-> table
--- | Luamlp:Backpropagation(y)					-> number
--- | Luamlp:Test(dinput)					-> None
-------------------------------------------------------
+
 
 -- struct luamlp
 local Luamlp = {}
-
+ 
 -- Modules local used
 local exp = math.exp
 local log = math.log
 local random = math.random
 local tanh = math.tanh
 
---Default function activation: tangent hiperbolic----------------
+--Default function activation: tangent hiperbolic
 local function ftanh(x) return tanh(x) end
 
---Default function derivate function activation -----------------
+--Default function derivate function activation
 local function dftanh(x) return 1 - ((ftanh(x)) ^ 2) end
 -------------------------------------------------------------------
 
@@ -95,8 +96,7 @@ end
 function Luamlp:New(ni, nh1, nh2, nout)
 
 	-- test if exist values
-	--assert(ni and nh1 and nh2 and nout,'error in parameters...')
-	assert(ni > 0 and nh1 > 0 and nh2 >= 0 and nout > 0,'error in parameters')
+	assert(ni > 0 and nh1 > 0 and nh2 >= 0 and nout > 0, 'error in parameters')
 
 	-- create struct multilayer perceptron
 	local mlp = {}
@@ -108,14 +108,14 @@ function Luamlp:New(ni, nh1, nh2, nout)
 	mlp.nout = nout
 	
 	-- parameters
-	mlp.input = nil 		-- Array of inputs
-	mlp.output = nil 		-- Array of outputs
-	mlp.lr = 0				-- Learning Rate
-	mlp.it = 0				-- Number of iterations
-	mlp.bias = 0			-- Value of Bias
-	mlp.error_training = 0	-- Value for error training
-	mlp.fx = nil			-- Function activation
-	mlp.dfx = nil			-- Function derivate activation
+	mlp.input = nil -- Array of inputs
+	mlp.output = nil -- Array of outputs
+	mlp.lr = 0 -- Learning Rate
+	mlp.it = 0 -- Number of iterations
+	mlp.bias = 0 -- Value of Bias (developing...)
+	mlp.error_training = 0 -- Value for error training
+	mlp.fx = nil -- Function activation
+	mlp.dfx = nil -- Function derivate activation
 	mlp.mode_training = nil -- mode: 'sequential' or 'lot'
 	
 	-- arrays outputs --
@@ -152,14 +152,14 @@ function Luamlp:New(ni, nh1, nh2, nout)
 	---------------------------------------------------------------------
 	--- Function: Config, configure as parameters of neural network
 	-- parameters:
-	-- lr: 				number
-	-- it: 				number
-	-- bias: 			number
-	-- error_training: 	number
+	-- lr: number
+	-- it: number
+	-- bias: number
+	-- error_training: number
 	-- fx: function (default ftanh)
 	-- dfx: function (default dftanh)
-	-- mm: 				number 
-	-- mode_training: 	string
+	-- mm: number 
+	-- mode_training: string
 	---------------------------------------------------------------------
 	function mlp:Config(lr, it, bias, ert, mm, mt, fx, dfx)
 
@@ -487,3 +487,4 @@ function Luamlp:New(ni, nh1, nh2, nout)
 end -- end function New
 
 return Luamlp
+

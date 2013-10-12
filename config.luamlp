@@ -2,14 +2,15 @@
 -- template for configure Multilayer Perceptron - Luamlp
 -- Author: Jhonathan Paulo Banczek - 2013
 -- jpbanczek@gmail.com
--- 
+-- example: problem XOR
+--
 
------------------------ config parameters:
+--- config parameters:
 -- input: inputs array for training 
 -- output: output excepted array for training
 -- lr: learning rate
 -- it: number of iterations
--- bias: bias for sum
+-- bias: bias for sum (developing)
 -- error_training: error accept for training
 -- mm: rate for mommentum
 -- mode_training: 'lot' or 'sequential'(default)
@@ -22,11 +23,11 @@ local config = {
 
 	input = {{0,0},{0,1},{1,0},{1,1}},
 	output =  {{0},{1},{1},{0}},
-	lr = 0.2,
+	lr = 0.5,
 	it = 1000000,
 	bias = 0,
 	error_training = 0.1,
-	mm = 0.02,
+	mm = 0.001,
 	mode_training = 'sequential',
 	fx = nil,
 	dfx = nil
