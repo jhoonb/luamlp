@@ -63,23 +63,23 @@ Detais of example XOR: <br>
  1,1 = 0<br>
 
 
-> <b> load module in variable <b> <br>
+> <b> load module in variable </b> <br>
 > luamlp = require 'luamlp' <br>
 > <b> create neural network with 2 neuron in layer input<br>
 > 2 neuron in layer hidden 1, 0 neuron in layer hidden 2<br>
-> and 1 neuron in layer ouput<b> <br>
+> and 1 neuron in layer ouput</b> <br>
 > mlp = luamlp:New(2,2,0,1)<br>
-> insert to input and output in neural network<br>
+> <b>insert to input and output in neural network</b> <br>
 > mlp.input = {{0,0}, {0,1}, {1,0}, {1,1}}<br>
 > mlp.output = {{0}, {1}, {1}, {1}}<br>
-> configure os parameters mlp<br>
+> <b> configure os parameters mlp<br>
 > 0.3 = learning rate, 10000 = iteration max.<br>
 > 1 = value for bias, 0.01: error in training<br>
-> 0.003: rate of mommentum term<br>
+> 0.003: rate of mommentum term </b> <br>
 > mlp:Config(0.3, 10000, 1, 0.01, 0.003)<br>
-> execute training, parameter true: displays error in each iteration<br>
+> <b> execute training, parameter true: displays error in each iteration </b> <br>
 > mlp:Training(true)<br>
-> test of learning<br>
+> <b> test of learning </b><br>
 > mlp:Test(mlp.input)<br>
 
 
