@@ -2,7 +2,7 @@
 -- Module: luamlp.lua
 -- Author: Jhonathan Paulo Banczek
 -- Copyright: jpbanczek@gmail.com
--- 09-10-2013
+-- 09-10-2013 - 16-10-2013
 
 -- DESCRIPTION
 
@@ -21,8 +21,10 @@
 
 -- DEPENDENCIES
 	Lua installed in system.
-	Tested in Lua 5.2 (5.1 dont work unpack in function Test)
+	Tested in Lua 5.1 and 5.2
 	Linux/Ubuntu: sudo apt-get install lua5.2
+	or
+	sudo apt-get install lua5.1
 
 -- FUNCTIONS | RETURN 
 
@@ -36,7 +38,6 @@
 -- | Luamlp:Test(dinput) -> None
 
 --]]
-
 
 -- struct luamlp
 local Luamlp = {}
@@ -139,6 +140,11 @@ function Luamlp:New(ni, nh1, nh2, nout)
 	else
 		mlp.w_h1_out = Narray(mlp.nh1, mlp.nout, 'r')
 	end
+
+	-- create weights for bias
+	mlp.wbinh1 = Narray(1, mlp.nh1, 'r')
+	if mlp.nh2 then mlp.wbh1h2 = Narray(1, mlp.nh2, 'r') end
+	mlp.wbh2ou =  Narray(1, mlp.nout, 'r')
 
 	-- create mommentum
 	mlp.mm_i_h1 = Narray(mlp.ninput, mlp.nh1, 0)
@@ -475,7 +481,11 @@ function Luamlp:New(ni, nh1, nh2, nout)
     	print('-----------test ------------')
     	
     	for i = 1, #dinput do
-    		print(table.unpack(self:Propagation(dinput[i])))
+    		if _VERSION == 'Lua 5.1' then
+    			print(unpack(self:Propagation(dinput[i])))
+    		else
+    			print(table.unpack(self:Propagation(dinput[i])))
+    		end
     	end
 
     end

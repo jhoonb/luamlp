@@ -15,9 +15,11 @@ Data_output y1 = {{y1},... {yn}} or {{y1,y2} ..., {yn-1, yn}}
 
 DEPENDENCIES
 --
-Lua installed in system. <br>
-Tested in Lua 5.2 (5.1 dont work unpack in function Test) <br>
-Linux/Ubuntu: > sudo apt-get install lua5.2 <br>
+Lua installed in system.<br>
+Tested in Lua 5.1 and 5.2<br>
+Linux/Ubuntu: sudo apt-get install lua5.2<br>
+or<br>
+sudo apt-get install lua5.1<br>
 
 FUNCTIONS | RETURN 
 --
